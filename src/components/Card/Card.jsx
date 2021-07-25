@@ -21,8 +21,11 @@ export default class Card extends React.Component {
         const { todos, deleteBtn, editBtn, doneBtn } = this.props;
         const cardClass = cn({
             "flex": true,
-            "justify-center": true,
+            "justify-between": true,
             "text-center": true,
+            "text-gray-500": true,
+            "mx-3": true,
+            
         });
         return (
             <div>
@@ -33,7 +36,8 @@ export default class Card extends React.Component {
                                 <div className={cardClass} key={el.id}>
                                     <input type="checkBox" />
                                     {el.text}
-                                    <Button
+                                    <div>
+                                        <Button
                                         className={buttonClass}
                                         btnName={"Edit"}
                                         onclick={() => editBtn()}
@@ -43,6 +47,8 @@ export default class Card extends React.Component {
                                         btnName={"Delete"}
                                         onClick={() => deleteBtn(el.id)}
                                     />
+                                    </div>
+                                    
                                     
                                 </div>
                             </div>

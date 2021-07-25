@@ -35,7 +35,6 @@ export default class Todo extends React.Component {
                 inputValue: "",
             };
         });
-        console.log(this.state.tasks);
     };
 
     handleEnter = (e) => {
@@ -59,18 +58,32 @@ export default class Todo extends React.Component {
     };
 
     handleEdit = () => {}
-    
+    inputClass = cn({
+        "text-center": true,
+        "border-gray-900": true,
+        "shadow-lg": true,
+        "justify-center": true
+    })
+    btnCLass= cn({
+        "text-center": true,
+        "border-black-900": true,
+        "shadow-lg": true,
+        "justify-center": true,
+        "text-gray-500": true,
+        "border-2": true,
+        "border-t-0": true 
+    })
     render() {
         return (
             <div>
-                <div>
+                <div className={this.inputClass}>
                     <Input
-                        className={this.card}
+                        className={this.inputClass}
                         value={this.state.inputValue}
                         onChange={this.handleInput}
                         onKeyPress={this.handleEnter}
                     ></Input>
-                    <Button btnName="add" onClick={this.handleAdd}></Button>
+                    <Button className={this.btnCLass} btnName="add" onClick={this.handleAdd}></Button>
                     <Card
                         todos={this.state.tasks}
                         deleteBtn={this.handleDelete}
