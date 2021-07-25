@@ -3,6 +3,7 @@ import "./Todo.css";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Card from "../Card/Card";
+import cn from "classnames"
 
 export default class Todo extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export default class Todo extends React.Component {
         let newTask = {
             id: this.state.id,
             text: this.state.inputValue,
-            // isCompleted: this.state.isCompleted,
+            isCompleted: false,
         };
         this.setState((prevState) => {
             return {
@@ -57,26 +58,28 @@ export default class Todo extends React.Component {
         });
     };
 
-    handleEdit = () => {
-        return `<input value="asd">`;
-    };
+    handleEdit = () => {}
+       
 
     handleDone = (id) => {
         this.setState((prevState) => {
-            return {
-                tasks: prevState.tasks.map((el) => {
-                    el = el.id === id ? {...prevState.tasks, isCompleted: !prevState.tasks.isCompleted} : prevState.tasks
-                }),
-            };
+            return { tasks: prevState.tasks.map((el) => {
+                if(el.id === id ){
+                    return {...el, isCompleted: !el.isCompleted}
+                }
+                return el
+            })}
+
+            
         });
     };
     
-
     render() {
         return (
             <div>
                 <div>
                     <Input
+                        className={this.card}
                         value={this.state.inputValue}
                         onChange={this.handleInput}
                         onKeyPress={this.handleEnter}
@@ -86,7 +89,8 @@ export default class Todo extends React.Component {
                         todos={this.state.tasks}
                         deleteBtn={this.handleDelete}
                         editBtn={this.handleEdit}
-                        isCompleted={this.handleDone}
+                        doneBtn={this.handleDone}
+                        isCompleted={this.state.isCompleted}
                     ></Card>
                 </div>
             </div>
