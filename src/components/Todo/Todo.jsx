@@ -59,20 +59,6 @@ export default class Todo extends React.Component {
     };
 
     handleEdit = () => {}
-       
-
-    handleDone = (id) => {
-        this.setState((prevState) => {
-            return { tasks: prevState.tasks.map((el) => {
-                if(el.id === id ){
-                    return {...el, isCompleted: !el.isCompleted}
-                }
-                return el
-            })}
-
-            
-        });
-    };
     
     render() {
         return (

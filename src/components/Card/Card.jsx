@@ -22,7 +22,6 @@ export default class Card extends React.Component {
         const cardClass = cn({
             "flex": true,
             "justify-center": true,
-            "bg-green-400": todos.map(el => !el.isCompleted)[0],
             "text-center": true,
         });
         return (
@@ -32,6 +31,7 @@ export default class Card extends React.Component {
                         <div>
                             <div>
                                 <div className={cardClass} key={el.id}>
+                                    <input type="checkBox" />
                                     {el.text}
                                     <Button
                                         className={buttonClass}
@@ -43,11 +43,7 @@ export default class Card extends React.Component {
                                         btnName={"Delete"}
                                         onClick={() => deleteBtn(el.id)}
                                     />
-                                    <Button
-                                        className={buttonClass}
-                                        btnName={"Done"}
-                                        onClick={() => doneBtn(el.id)}
-                                    />
+                                    
                                 </div>
                             </div>
                         </div>
